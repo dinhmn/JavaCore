@@ -1,0 +1,17 @@
+package vn.devpro.bai11StreamExam;
+
+public class StreamDemo {
+	// Ghi ky tu vao file van ban
+	public static void fileOutputStreamDemo() {
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		
+		
+
+	}
+
+}

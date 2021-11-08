@@ -1,0 +1,24 @@
+package vn.devpro.bai11FIle;
+
+import java.io.File;
+
+public class FIleDemo {
+
+//	Tạo thư mục mới trên ổ đĩa
+	public static void createFolder() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java";
+		File file = new File(path);
+		
+		if (file.exists()) {
+			System.out.println("Thu muc " + path + " da ton tai tren dia");
+		} else {
+			file.mkdir();
+			System.out.println("Thu muc " + path + " da duoc tao");
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		createFolder();
+	}
+
+}

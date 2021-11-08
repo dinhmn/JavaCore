@@ -1,0 +1,201 @@
+package vn.devpro.bai11StreamExam;
+
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import vn.devpro.bai11FIle.Student;
+
+public class StreamDemo {
+	// Ghi ky tu vao file van ban
+	public static void fileOutputStreamDemo() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\ALPHABET.TXT";
+		File file = new File(path);
+		FileOutputStream fout = null;
+		try {
+			fout = new FileOutputStream(file);
+			for (char c ='a'; c <= 'z'; c++) {
+				fout.write(c);
+				fout.write(' ');
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				fout.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+	}
+	//Doc cac ky tu tu file van ban
+	public static void fileInputStreamDemo() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\ALPHABET.TXT";
+		File file = new File(path);
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+			int x = fin.read();
+			while (x != -1) { // x = -1 neu da doc het cac ky tu trong file
+				System.out.print((char)x);
+				x = fin.read();
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				fin.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+	}
+//	Ghi du lieu vao file nhi phan
+	public static void dataOutputStreamDemo() {
+		int a = 1000;
+		long b = -3200L;
+		double d = 25.325;
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\NUMBER.BIN";
+		FileOutputStream fout = null;
+		DataOutputStream dout = null;
+		try {
+			fout = new FileOutputStream(path);
+			dout = new DataOutputStream(fout);
+			dout.writeInt(a);
+			dout.writeLong(b);
+			dout.writeDouble(d);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				dout.close();
+				fout.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+	}
+//	Doc du lieu nhi phan
+	public static void dataInputStreamDemo() {
+		int a = 0;
+		long b = 0;
+		double d = 0;
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\NUMBER.BIN";
+		FileInputStream fin = null;
+		DataInputStream din = null;
+		try {
+			fin = new FileInputStream(path);
+			din = new DataInputStream(fin);
+			a = din.readInt();
+			b = din.readLong();
+			d = din.readDouble();
+
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				din.close();
+				fin.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		System.out.println("Ket qua doc duoc a = " + a + ", b= " + b + ", d= " + d);
+	}
+//	Ghi doi tuong vao file nhi phan
+	public static void dataObjectOutputStreamDemo() {
+		Student s = new Student(10001, "John O'Shear", 25, "Male");
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\STUDENT.BIN";
+		FileOutputStream fout = null;
+		ObjectOutputStream oout = null;
+		try {
+			fout = new FileOutputStream(path);
+			oout = new ObjectOutputStream(fout);
+			oout.writeObject(s);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				oout.close();
+				fout.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+	}
+//	
+	public static void objectStreamDemo() {
+		Student s = null;
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\STUDENT.BIN";
+		FileInputStream fin = null;
+		ObjectInputStream oin = null;
+		try {
+			fin = new FileInputStream(path);
+			oin = new ObjectInputStream(fin);
+			s = (Student)oin.readObject();
+
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				oin.close();
+				fin.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		if (s != null)
+			System.out.println(s.toString());
+	}
+//	Ghi chuoi ky tu vao file van ban
+	public static void buffereWriterDemo() {
+		String[] poem = {
+			"Khum biet gi dau\n",
+			"The la khum biet gi dau\n",
+			"Thoi to xin khum biet gi dau\n", 
+			"Gan bun ma chang hoi tanh mui bun\n"
+		};
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\POEM.BIN";
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		
+		try {
+			fw = new FileWriter(path);
+			bw = new BufferedWriter(fw);
+			for (String line : poem) {
+				bw.write(line);
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				bw.close();
+				fw.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+	}
+	public static void main(String[] args) {
+//		dataObjectOutputStreamDemo();
+//		objectStreamDemo();
+		
+		buffereWriterDemo();
+		
+//		dataInputStreamDemo();
+//		fileOutputStreamDemo();
+//		fileInputStreamDemo();
+//		dataOutputStreamDemo();
+	}
+
+}

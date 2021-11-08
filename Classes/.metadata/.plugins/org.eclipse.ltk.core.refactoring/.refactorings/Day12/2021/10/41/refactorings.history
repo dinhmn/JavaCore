@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;vn.devpro.bai11DaLuong&apos; to &apos;vn.devpro.bai10DaLuong.ex2&apos;&#x0D;&#x0A;- Original project: &apos;Day12&apos;&#x0D;&#x0A;- Original element: &apos;Day12/src/vn.devpro.bai11DaLuong&apos;&#x0D;&#x0A;- Renamed element: &apos;Day12/src/vn.devpro.bai10DaLuong.ex2&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;vn.devpro.bai11DaLuong&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;vn.devpro.bai11DaLuong" name="vn.devpro.bai10DaLuong.ex2" qualified="false" references="true" stamp="1633693183227" textual="false" version="1.0"/>
+</session>

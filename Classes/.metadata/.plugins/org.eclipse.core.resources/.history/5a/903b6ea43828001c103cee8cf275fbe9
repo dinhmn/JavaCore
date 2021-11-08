@@ -1,0 +1,43 @@
+package vn.devpro.bai11FIle;
+
+import java.io.File;
+import java.io.IOException;
+
+public class FIleDemo {
+
+//	Tạo thư mục mới trên ổ đĩa
+	public static void createFolder() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java";
+		File file = new File(path);
+		String pathName = file.getName();
+		if (file.exists()) {
+			System.out.println("Thu muc " + pathName + " da ton tai tren dia");
+		} else {
+			file.mkdir();
+			System.out.println("Thu muc " + pathName + " da duoc tao");
+		}
+	}
+	
+	public static void createFile() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\INPUT.TXT";
+		File file = new File(path);
+		String fileName = file.getName();
+		if (file.exists()) {
+			System.out.println("Tep tin " + fileName + " da co trong thu muc");
+		} else {
+			try {
+				file.createNewFile();
+				System.out.println("Da tao file " + fileName + " trong thu muc");
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		System.out.println("Kich thuoc cua file " + fileName + " la: " fileName.length());
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		createFolder();
+		createFile();
+	}
+
+}

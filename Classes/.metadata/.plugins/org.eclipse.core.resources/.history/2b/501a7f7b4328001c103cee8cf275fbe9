@@ -1,0 +1,114 @@
+package vn.devpro.bai11StreamExam;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class StreamDemo {
+	// Ghi ky tu vao file van ban
+	public static void fileOutputStreamDemo() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\ALPHABET.TXT";
+		File file = new File(path);
+		FileOutputStream fout = null;
+		try {
+			fout = new FileOutputStream(file);
+			for (char c ='a'; c <= 'z'; c++) {
+				fout.write(c);
+				fout.write(' ');
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				fout.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+	}
+	//Doc cac ky tu tu file van ban
+	public static void fileInputStreamDemo() {
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\ALPHABET.TXT";
+		File file = new File(path);
+		FileInputStream fin = null;
+		try {
+			fin = new FileInputStream(file);
+			int x = fin.read();
+			while (x != -1) { // x = -1 neu da doc het cac ky tu trong file
+				System.out.print((char)x);
+				x = fin.read();
+			}
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				fin.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+	}
+//	Ghi du lieu vao file nhi phan
+	public static void dataOutputStreamDemo() {
+		int a = 1000;
+		long b = -3200L;
+		double d = 25.325;
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\NUMBER.BIN";
+		FileOutputStream fout = null;
+		DataOutputStream dout = null;
+		try {
+			fout = new FileOutputStream(path);
+			dout = new DataOutputStream(fout);
+			dout.writeInt(a);
+			dout.writeLong(b);
+			dout.writeDouble(d);
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				dout.close();
+				fout.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+	}
+//	Doc du lieu nhi phan
+	public static void dataInputStreamDemo() {
+		int a = 0;
+		long b = 0;
+		double d = 0;
+		String path = "D:\\DevPro\\Java\\Classes\\Day13\\src\\vn\\devpro\\Java\\NUMBER.BIN";
+		FileInputStream fin = null;
+		DataInputStream din = null;
+		try {
+			fin = new FileInputStream(path);
+			din = new DataInputStream(fin);
+			a = din.readInt();
+			b = din.readLong();
+			d = din.readDouble();
+
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				din.close();
+				fin.close();
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		System.out.println("Ket qua doc duoc a = " + a + ", b= " + b + ", d= " + d);
+	}
+	public static void main(String[] args) {
+		dataInputStreamDemo();
+//		fileOutputStreamDemo();
+//		fileInputStreamDemo();
+//		dataOutputStreamDemo();
+	}
+
+}

@@ -1,0 +1,10 @@
+package vn.devpro.bai10DaLuong.ex1;
+
+public class GotoSchoolUtils {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
